@@ -1,0 +1,4157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Big Bites — Loaded. Loud. Fast.</title>
+
+
+    <!-- GOOGLE FONTS -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Caveat:wght@600;700&display=swap"
+          rel="stylesheet">
+
+
+    <style>
+
+        :root {
+
+            --bg: #17110c;
+            --bg-alt: #201811;
+
+            --grid-line:
+                rgba(255,243,222,0.045);
+
+            --cream: #fff3de;
+            --cream-dim: #cabfa9;
+
+            --mustard: #f5b301;
+            --mustard-deep: #d99400;
+
+            --chili: #e8432d;
+            --chili-deep: #b8301e;
+
+            --pickle: #7c8f4a;
+
+            --paper: #efe4c9;
+
+            /* FIXED VARIABLES */
+            --brown: #2b2013;
+            --display: 'Anton', sans-serif;
+        }
+
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            background: var(--bg);
+
+            color: var(--cream);
+
+            font-family:
+                'DM Sans',
+                sans-serif;
+
+            -webkit-font-smoothing:
+                antialiased;
+
+            overflow-x: hidden;
+        }
+
+
+        h1,
+        h2,
+        h3,
+        .display {
+
+            font-family:
+                'Anton',
+                sans-serif;
+
+            font-weight: 400;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.5px;
+
+            line-height: 0.95;
+
+            margin: 0;
+        }
+
+
+        .marker {
+
+            font-family:
+                'Caveat',
+                cursive;
+
+            font-weight: 700;
+        }
+
+
+        a {
+
+            color: inherit;
+
+            text-decoration: none;
+        }
+
+
+        button {
+
+            font-family: inherit;
+        }
+
+
+        ::selection {
+
+            background: var(--chili);
+
+            color: var(--cream);
+        }
+
+
+        :focus-visible {
+
+            outline:
+                3px solid var(--mustard);
+
+            outline-offset: 3px;
+        }
+
+
+        /* =========================
+           BACKGROUND
+        ========================= */
+
+        .tile-bg {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: -1;
+
+            background-image:
+
+                linear-gradient(
+                    var(--grid-line) 1px,
+                    transparent 1px
+                ),
+
+                linear-gradient(
+                    90deg,
+                    var(--grid-line) 1px,
+                    transparent 1px
+                );
+
+            background-size: 42px 42px;
+
+            background-color:
+                var(--bg);
+        }
+
+
+        .wrap {
+
+            max-width: 1180px;
+
+            margin: 0 auto;
+
+            padding:
+                0 28px;
+        }
+
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        header {
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 50;
+
+            background:
+                rgba(23,17,12,0.88);
+
+            backdrop-filter:
+                blur(8px);
+
+            border-bottom:
+                1px solid
+                rgba(255,243,222,0.08);
+        }
+
+
+        nav {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content:
+                space-between;
+
+            padding:
+                16px 28px;
+
+            max-width: 1180px;
+
+            margin: 0 auto;
+        }
+
+
+        .logo {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            font-family:
+                'Anton',
+                sans-serif;
+
+            font-size: 1.5rem;
+
+            letter-spacing: 0.5px;
+        }
+
+
+        .logo .dot {
+
+            color:
+                var(--chili);
+        }
+
+
+        .nav-links {
+
+            display: flex;
+
+            gap: 32px;
+
+            font-size: 0.95rem;
+
+            font-weight: 500;
+        }
+
+
+        .nav-links a {
+
+            position: relative;
+
+            padding: 4px 0;
+
+            color:
+                var(--cream-dim);
+
+            transition:
+                color .2s;
+        }
+
+
+        .nav-links a:hover {
+
+            color:
+                var(--mustard);
+        }
+
+
+        .nav-links a::after {
+
+            content: '';
+
+            position: absolute;
+
+            left: 0;
+
+            bottom: -2px;
+
+            width: 0;
+
+            height: 2px;
+
+            background:
+                var(--mustard);
+
+            transition:
+                width .25s;
+        }
+
+
+        .nav-links a:hover::after {
+
+            width: 100%;
+        }
+
+
+        .nav-cta {
+
+            background:
+                var(--chili);
+
+            color:
+                var(--cream);
+
+            padding:
+                10px 22px;
+
+            border-radius: 3px;
+
+            font-weight: 700;
+
+            font-size: .9rem;
+
+            letter-spacing: .3px;
+
+            border:
+                2px solid
+                var(--chili);
+
+            transition:
+                transform .15s ease,
+                background .2s;
+
+            cursor: pointer;
+        }
+
+
+        .nav-cta:hover {
+
+            background:
+                transparent;
+
+            color:
+                var(--chili);
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        .burger {
+
+            display: none;
+
+            flex-direction: column;
+
+            gap: 5px;
+
+            background: none;
+
+            border: none;
+
+            cursor: pointer;
+
+            padding: 6px;
+        }
+
+
+        .burger span {
+
+            width: 24px;
+
+            height: 2px;
+
+            background:
+                var(--cream);
+
+            display: block;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+
+            position: relative;
+
+            padding:
+                110px 0 90px;
+
+            overflow: hidden;
+        }
+
+
+        .hero-inner {
+
+            max-width: 1180px;
+
+            margin: 0 auto;
+
+            padding:
+                0 28px;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        .eyebrow {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            color:
+                var(--mustard);
+
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            font-size: .78rem;
+
+            text-transform: uppercase;
+
+            margin-bottom: 22px;
+        }
+
+
+        .eyebrow::before {
+
+            content: '';
+
+            width: 26px;
+
+            height: 2px;
+
+            background:
+                var(--mustard);
+        }
+
+
+        .hero h1 {
+
+            font-size:
+                clamp(
+                    3.2rem,
+                    9vw,
+                    7.5rem
+                );
+
+            color:
+                var(--cream);
+        }
+
+
+        .hero h1 .flicker {
+
+            color:
+                var(--mustard);
+
+            text-shadow:
+                0 0 8px
+                rgba(245,179,1,.55),
+
+                0 0 26px
+                rgba(245,179,1,.25);
+
+            animation:
+                flicker 5.5s infinite;
+        }
+
+
+        @keyframes flicker {
+
+            0%,3%,6%,100% {
+                opacity: 1;
+            }
+
+            4% {
+                opacity: .4;
+            }
+
+            5% {
+                opacity: .85;
+            }
+
+            62% {
+                opacity: 1;
+            }
+
+            63% {
+                opacity: .5;
+            }
+
+            64% {
+                opacity: 1;
+            }
+        }
+
+
+        .hero p.lede {
+
+            max-width: 520px;
+
+            margin-top: 26px;
+
+            font-size: 1.12rem;
+
+            color:
+                var(--cream-dim);
+
+            line-height: 1.6;
+        }
+
+
+        .hero-ctas {
+
+            display: flex;
+
+            gap: 16px;
+
+            margin-top: 38px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .btn-primary {
+
+            background:
+                var(--chili);
+
+            color:
+                var(--cream);
+
+            padding:
+                16px 30px;
+
+            border-radius: 3px;
+
+            font-weight: 700;
+
+            font-size: 1rem;
+
+            border:
+                2px solid
+                var(--chili);
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            transition:
+                transform .15s ease,
+                box-shadow .2s;
+
+            cursor: pointer;
+        }
+
+
+        .btn-primary:hover {
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 10px 22px
+                rgba(232,67,45,.35);
+        }
+
+
+        .btn-ghost {
+
+            padding:
+                16px 30px;
+
+            border-radius: 3px;
+
+            font-weight: 700;
+
+            font-size: 1rem;
+
+            border:
+                2px solid
+                rgba(255,243,222,.3);
+
+            color:
+                var(--cream);
+
+            background:
+                transparent;
+
+            transition:
+                border-color .2s,
+                background .2s;
+
+            cursor: pointer;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+        }
+
+
+        .btn-ghost:hover {
+
+            border-color:
+                var(--mustard);
+
+            background:
+                rgba(245,179,1,.08);
+        }
+
+
+        .hero-stats {
+
+            display: flex;
+
+            gap: 44px;
+
+            margin-top: 64px;
+
+            flex-wrap: wrap;
+
+            padding-top: 36px;
+
+            border-top:
+                1px solid
+                rgba(255,243,222,.1);
+        }
+
+
+        .stat b {
+
+            font-family:
+                'Anton',
+                sans-serif;
+
+            font-size: 2rem;
+
+            color:
+                var(--mustard);
+
+            display: block;
+        }
+
+
+        .stat span {
+
+            font-size: .85rem;
+
+            color:
+                var(--cream-dim);
+
+            text-transform: uppercase;
+
+            letter-spacing: .5px;
+        }
+
+
+        .bite-decal {
+
+            position: absolute;
+
+            right: -60px;
+
+            top: 70px;
+
+            width: 340px;
+
+            height: 340px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle at 35% 35%,
+                    var(--mustard),
+                    var(--mustard-deep) 70%
+                );
+
+            box-shadow:
+                0 30px 60px
+                rgba(0,0,0,.45);
+
+            z-index: 1;
+        }
+
+
+        .bite-decal::after {
+
+            content: '';
+
+            position: absolute;
+
+            width: 130px;
+
+            height: 130px;
+
+            background:
+                var(--bg);
+
+            border-radius: 50%;
+
+            top: -40px;
+
+            right: -40px;
+        }
+
+
+        .bite-decal .label {
+
+            position: absolute;
+
+            inset: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            font-family:
+                'Anton',
+                sans-serif;
+
+            color: #3a2405;
+
+            font-size: 1.05rem;
+
+            line-height: 1.15;
+
+            padding:
+                0 40px;
+
+            transform:
+                rotate(-8deg);
+        }
+
+
+        .hero-photo {
+
+            position: absolute;
+
+            right: 4%;
+
+            top: 35px;
+
+            width:
+                min(420px,34vw);
+
+            aspect-ratio: 1 / 1;
+
+            object-fit: cover;
+
+            border-radius: 18px;
+
+            border:
+                8px solid
+                rgba(255,243,222,.12);
+
+            box-shadow:
+                0 30px 70px
+                rgba(0,0,0,.55);
+
+            transform:
+                rotate(3deg);
+
+            z-index: 1;
+
+            filter:
+                saturate(1.08)
+                contrast(1.03);
+        }
+
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        .section {
+
+            padding:
+                100px 0;
+        }
+
+
+        .section-alt {
+
+            background:
+                var(--bg-alt);
+
+            border-top:
+                1px solid
+                rgba(255,243,222,.06);
+
+            border-bottom:
+                1px solid
+                rgba(255,243,222,.06);
+        }
+
+
+        .section-head {
+
+            max-width: 640px;
+
+            margin-bottom: 56px;
+        }
+
+
+        .section-head .eyebrow {
+
+            margin-bottom: 16px;
+        }
+
+
+        .section-head h2 {
+
+            font-size:
+                clamp(
+                    2.2rem,
+                    5vw,
+                    3.4rem
+                );
+
+            color:
+                var(--cream);
+        }
+
+
+        .section-head p {
+
+            color:
+                var(--cream-dim);
+
+            margin-top: 16px;
+
+            font-size: 1.05rem;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           MENU
+        ========================= */
+
+        .menu-tabs {
+
+            display: flex;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+
+            margin-bottom: 46px;
+        }
+
+
+        .menu-tab {
+
+            padding:
+                10px 20px;
+
+            border-radius: 20px;
+
+            border:
+                1.5px solid
+                rgba(255,243,222,.22);
+
+            font-size: .88rem;
+
+            font-weight: 700;
+
+            color:
+                var(--cream-dim);
+
+            cursor: pointer;
+
+            background:
+                transparent;
+
+            transition:
+                all .2s;
+        }
+
+
+        .menu-tab.active,
+        .menu-tab:hover {
+
+            background:
+                var(--mustard);
+
+            border-color:
+                var(--mustard);
+
+            color:
+                #241a0c;
+        }
+
+
+        .menu-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fill,
+                    minmax(300px,1fr)
+                );
+
+            gap: 26px;
+        }
+
+
+        .ticket {
+
+            background:
+                var(--paper);
+
+            color:
+                #2b2013;
+
+            border-radius: 4px;
+
+            padding:
+                26px 24px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 14px 30px
+                rgba(0,0,0,.35);
+
+            transform:
+                rotate(
+                    var(--tilt,0deg)
+                );
+
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease;
+        }
+
+
+        .ticket:nth-child(3n+1) {
+            --tilt: -1.1deg;
+        }
+
+
+        .ticket:nth-child(3n+2) {
+            --tilt: .6deg;
+        }
+
+
+        .ticket:nth-child(3n+3) {
+            --tilt: -.4deg;
+        }
+
+
+        .ticket:hover {
+
+            transform:
+                rotate(0deg)
+                translateY(-6px);
+
+            box-shadow:
+                0 22px 40px
+                rgba(0,0,0,.45);
+        }
+
+
+        .ticket::before {
+
+            content: '';
+
+            position: absolute;
+
+            top: 0;
+
+            left: 18px;
+
+            right: 18px;
+
+            height: 10px;
+
+            background-image:
+                radial-gradient(
+                    circle,
+                    var(--bg-alt) 5px,
+                    transparent 5.5px
+                );
+
+            background-size:
+                16px 10px;
+
+            background-position:
+                top center;
+
+            background-repeat:
+                repeat-x;
+        }
+
+
+        .food-photo {
+
+            width:
+                calc(100% + 48px);
+
+            height: 190px;
+
+            margin:
+                -26px -24px 22px;
+
+            object-fit: cover;
+
+            display: block;
+
+            background:
+                #3a2b1c;
+
+            border-bottom:
+                3px solid
+                var(--mustard);
+        }
+
+
+        .ticket .row1 {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                flex-start;
+
+            gap: 14px;
+
+            margin-top: 6px;
+        }
+
+
+        .ticket h3 {
+
+            font-size: 1.28rem;
+
+            line-height: 1.1;
+        }
+
+
+        .ticket .price {
+
+            font-family:
+                'Anton',
+                sans-serif;
+
+            color:
+                var(--chili-deep);
+
+            font-size: 1.2rem;
+
+            white-space: nowrap;
+        }
+
+
+        .ticket p {
+
+            font-size: .92rem;
+
+            color:
+                #5a4d38;
+
+            margin:
+                12px 0 0;
+
+            line-height: 1.5;
+        }
+
+
+        .ticket .tag {
+
+            display: inline-block;
+
+            margin-top: 16px;
+
+            font-size: .72rem;
+
+            font-weight: 700;
+
+            letter-spacing: .6px;
+
+            text-transform: uppercase;
+
+            background:
+                var(--pickle);
+
+            color:
+                #f5f6ea;
+
+            padding:
+                4px 10px;
+
+            border-radius: 2px;
+        }
+
+
+        .ticket .stamp {
+
+            position: absolute;
+
+            bottom: 18px;
+
+            right: 18px;
+
+            border:
+                2px solid
+                var(--chili-deep);
+
+            color:
+                var(--chili-deep);
+
+            font-family:
+                'Anton',
+                sans-serif;
+
+            font-size: .68rem;
+
+            padding:
+                4px 8px;
+
+            border-radius: 3px;
+
+            transform:
+                rotate(-9deg);
+
+            opacity: .85;
+        }
+
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                1.1fr .9fr;
+
+            gap: 60px;
+
+            align-items: center;
+        }
+
+
+        .about-copy p {
+
+            color:
+                var(--cream-dim);
+
+            line-height: 1.75;
+
+            font-size: 1.05rem;
+
+            margin-bottom: 18px;
+        }
+
+
+        .about-copy .marker {
+
+            color:
+                var(--mustard);
+
+            font-size: 1.7rem;
+
+            display: block;
+
+            margin-bottom: 10px;
+        }
+
+
+        .about-visual {
+
+            overflow: hidden;
+
+            background-image:
+
+                linear-gradient(
+                    180deg,
+                    rgba(0,0,0,.08),
+                    rgba(0,0,0,.72)
+                ),
+
+                url(
+                    'https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1200&q=90'
+                );
+
+            background-size: cover;
+
+            background-position: center;
+
+            min-height: 420px;
+
+            border-radius: 8px;
+
+            padding: 42px;
+
+            position: relative;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+        }
+
+
+        .about-visual .big-num {
+
+            position: relative;
+
+            z-index: 2;
+
+            font-family:
+                'Anton',
+                sans-serif;
+
+            font-size: 6.5rem;
+
+            color:
+                rgba(255,243,222,.92);
+
+            text-shadow:
+                0 4px 20px
+                rgba(0,0,0,.55);
+        }
+
+
+        .about-visual .cap {
+
+            position: absolute;
+
+            bottom: 28px;
+
+            left: 28px;
+
+            right: 28px;
+
+            font-size: .95rem;
+
+            color:
+                rgba(255,243,222,.85);
+
+            z-index: 2;
+
+            text-shadow:
+                0 2px 10px
+                rgba(0,0,0,.7);
+        }
+
+
+        /* =========================
+           GALLERY
+        ========================= */
+
+        .strip {
+
+            display: flex;
+
+            gap: 18px;
+
+            overflow-x: auto;
+
+            padding-bottom: 8px;
+
+            scrollbar-width: none;
+        }
+
+
+        .strip::-webkit-scrollbar {
+            display: none;
+        }
+
+
+        .strip-card {
+
+            flex:
+                0 0 260px;
+
+            height: 320px;
+
+            border-radius: 6px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            display: flex;
+
+            align-items: flex-end;
+
+            padding: 20px;
+
+            background:
+                var(--bg-alt);
+
+            border:
+                1px solid
+                rgba(255,243,222,.08);
+        }
+
+
+        .strip-card.photo-card {
+
+            background-size: cover;
+
+            background-position: center;
+
+            isolation: isolate;
+        }
+
+
+        .strip-card.photo-card::before {
+
+            content: '';
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(0,0,0,.05) 25%,
+                    rgba(0,0,0,.82) 100%
+                );
+
+            z-index: -1;
+        }
+
+
+        .strip-card h4 {
+
+            font-family:
+                'Anton',
+                sans-serif;
+
+            font-size: 1.3rem;
+
+            color:
+                var(--cream);
+        }
+
+
+        .strip-card span {
+
+            font-size: .85rem;
+
+            color:
+                var(--cream-dim);
+        }
+
+
+        /* =========================
+           VISIT
+        ========================= */
+
+        .visit-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 26px;
+        }
+
+
+        .visit-card {
+
+            background:
+                var(--bg-alt);
+
+            border:
+                1px solid
+                rgba(255,243,222,.1);
+
+            border-radius: 8px;
+
+            padding: 34px;
+        }
+
+
+        .visit-card h3 {
+
+            color:
+                var(--mustard);
+
+            font-size: 1.4rem;
+
+            margin-bottom: 18px;
+        }
+
+
+        .visit-card.photo-location {
+
+            min-height: 310px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: flex-end;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background-image:
+
+                linear-gradient(
+                    180deg,
+                    rgba(23,17,12,.08),
+                    rgba(23,17,12,.92)
+                ),
+
+                url(
+                    'https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=1200&q=90'
+                );
+
+            background-size: cover;
+
+            background-position: center;
+        }
+
+
+        .visit-card.photo-contact {
+
+            min-height: 310px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: flex-end;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background-image:
+
+                linear-gradient(
+                    180deg,
+                    rgba(23,17,12,.08),
+                    rgba(23,17,12,.92)
+                ),
+
+                url(
+                    'https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=1200&q=90'
+                );
+
+            background-size: cover;
+
+            background-position: center;
+        }
+
+
+        .visit-row {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            padding:
+                10px 0;
+
+            border-bottom:
+                1px dashed
+                rgba(255,243,222,.12);
+
+            font-size: .95rem;
+        }
+
+
+        .visit-row:last-child {
+
+            border-bottom: none;
+        }
+
+
+        .visit-row span:first-child {
+
+            color:
+                var(--cream-dim);
+        }
+
+
+        .visit-row span:last-child {
+
+            font-weight: 700;
+        }
+
+
+        .visit-card p {
+
+            color:
+                var(--cream-dim);
+
+            line-height: 1.7;
+
+            font-size: .98rem;
+        }
+
+
+        .visit-card .addr {
+
+            color:
+                var(--cream);
+
+            font-weight: 600;
+
+            margin-bottom: 10px;
+        }
+
+
+        /* =========================
+           CTA
+        ========================= */
+
+        .cta-banner {
+
+            position: relative;
+
+            overflow: hidden;
+
+            background-image:
+
+                linear-gradient(
+                    rgba(245,179,1,.88),
+                    rgba(245,179,1,.88)
+                ),
+
+                url(
+                    'https://images.unsplash.com/photo-1585109649139-366815a0d713?auto=format&fit=crop&w=1200&q=90'
+                );
+
+            background-size: cover;
+
+            background-position: center;
+
+            color:
+                #241a0c;
+
+            padding:
+                70px 0;
+
+            text-align: center;
+        }
+
+
+        .cta-banner h2 {
+
+            font-size:
+                clamp(
+                    2rem,
+                    5vw,
+                    3.2rem
+                );
+
+            margin-bottom: 20px;
+        }
+
+
+        .cta-banner p {
+
+            font-size: 1.1rem;
+
+            margin-bottom: 32px;
+
+            opacity: .85;
+        }
+
+
+        .cta-banner .btn-primary {
+
+            background:
+                #241a0c;
+
+            border-color:
+                #241a0c;
+        }
+
+
+        .cta-banner .btn-primary:hover {
+
+            background:
+                transparent;
+
+            color:
+                #241a0c;
+
+            box-shadow: none;
+        }
+
+
+        /* =========================
+           ORDER MODAL
+        ========================= */
+
+        .order-modal {
+
+            position: fixed;
+
+            inset: 0;
+
+            background:
+                rgba(10,8,6,.78);
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+            z-index: 9999;
+
+            backdrop-filter:
+                blur(5px);
+        }
+
+
+        .order-modal.show {
+
+            display: flex;
+        }
+
+
+        .order-box {
+
+            width:
+                min(560px,100%);
+
+            max-height: 92vh;
+
+            overflow: auto;
+
+            background:
+                var(--brown);
+
+            border:
+                2px solid
+                var(--mustard);
+
+            border-radius: 8px;
+
+            box-shadow:
+                0 30px 80px
+                rgba(0,0,0,.65);
+
+            padding: 30px;
+
+            position: relative;
+        }
+
+
+        .order-box h2 {
+
+            font-family:
+                'Anton',
+                sans-serif;
+
+            font-size: 2.5rem;
+
+            letter-spacing: 1px;
+
+            margin:
+                0 0 6px;
+
+            color:
+                var(--cream);
+        }
+
+
+        .order-box .order-sub {
+
+            color:
+                var(--cream-dim);
+
+            margin:
+                0 0 22px;
+        }
+
+
+        .order-close {
+
+            position: absolute;
+
+            right: 16px;
+
+            top: 12px;
+
+            background: none;
+
+            border: 0;
+
+            color:
+                var(--cream);
+
+            font-size: 30px;
+
+            cursor: pointer;
+
+            line-height: 1;
+        }
+
+
+        .order-form {
+
+            display: grid;
+
+            gap: 14px;
+        }
+
+
+        .order-form label {
+
+            font-weight: 700;
+
+            color:
+                var(--cream);
+
+            font-size: .92rem;
+        }
+
+
+        .order-form input,
+        .order-form textarea,
+        .order-form select {
+
+            width: 100%;
+
+            margin-top: 6px;
+
+            background:
+                #211810;
+
+            border:
+                1px solid
+                rgba(255,243,222,.2);
+
+            border-radius: 4px;
+
+            color:
+                var(--cream);
+
+            padding:
+                12px 13px;
+
+            font: inherit;
+
+            outline: none;
+        }
+
+
+        .order-form input:focus,
+        .order-form textarea:focus,
+        .order-form select:focus {
+
+            border-color:
+                var(--mustard);
+        }
+
+
+        .order-form textarea {
+
+            min-height: 95px;
+
+            resize: vertical;
+        }
+
+
+        .order-two {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 14px;
+        }
+
+
+        .order-status {
+
+            min-height: 22px;
+
+            font-weight: 700;
+
+            margin: 0;
+        }
+
+
+        .order-status.success {
+
+            color:
+                #8ee28e;
+        }
+
+
+        .order-status.error {
+
+            color:
+                #ff9a8d;
+        }
+
+
+        .order-submit {
+
+            border: 0;
+
+            cursor: pointer;
+
+            justify-content: center;
+
+            width: 100%;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+
+            padding:
+                56px 0 32px;
+
+            background:
+                var(--bg);
+        }
+
+
+        .foot-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                1.4fr 1fr 1fr;
+
+            gap: 40px;
+
+            margin-bottom: 44px;
+        }
+
+
+        .foot-logo {
+
+            font-family:
+                'Anton',
+                sans-serif;
+
+            font-size: 1.6rem;
+
+            margin-bottom: 14px;
+        }
+
+
+        .foot-logo .dot {
+
+            color:
+                var(--chili);
+        }
+
+
+        footer p {
+
+            color:
+                var(--cream-dim);
+
+            font-size: .92rem;
+
+            line-height: 1.6;
+        }
+
+
+        footer h4 {
+
+            font-size: .85rem;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+
+            color:
+                var(--mustard);
+
+            margin-bottom: 14px;
+        }
+
+
+        footer ul {
+
+            list-style: none;
+
+            padding: 0;
+
+            margin: 0;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 10px;
+        }
+
+
+        footer ul a {
+
+            color:
+                var(--cream-dim);
+
+            font-size: .94rem;
+
+            transition:
+                color .2s;
+        }
+
+
+        footer ul a:hover {
+
+            color:
+                var(--mustard);
+        }
+
+
+        .footer-photo-row {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4,1fr);
+
+            gap: 12px;
+
+            margin-bottom: 38px;
+        }
+
+
+        .footer-photo-row img {
+
+            width: 100%;
+
+            height: 130px;
+
+            object-fit: cover;
+
+            border-radius: 6px;
+
+            border:
+                1px solid
+                rgba(255,243,222,.1);
+
+            display: block;
+        }
+
+
+        .foot-bottom {
+
+            border-top:
+                1px solid
+                rgba(255,243,222,.08);
+
+            padding-top: 24px;
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            flex-wrap: wrap;
+
+            gap: 12px;
+
+            font-size: .82rem;
+
+            color:
+                var(--cream-dim);
+        }
+
+
+        /* =========================
+           REVEAL
+        ========================= */
+
+        .reveal {
+
+            opacity: 0;
+
+            transform:
+                translateY(24px);
+
+            transition:
+                opacity .6s ease,
+                transform .6s ease;
+        }
+
+
+        .reveal.in {
+
+            opacity: 1;
+
+            transform:
+                translateY(0);
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width:960px) {
+
+            .bite-decal {
+
+                display: none;
+            }
+
+
+            .hero-photo {
+
+                opacity: .20;
+
+                width: 440px;
+
+                max-width: 80vw;
+
+                right: -100px;
+
+                top: 80px;
+            }
+        }
+
+
+        @media (max-width:860px) {
+
+            .about-grid {
+
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        @media (max-width:760px) {
+
+            .nav-links {
+
+                display: none;
+            }
+
+
+            .burger {
+
+                display: flex;
+            }
+
+
+            .nav-links.open {
+
+                display: flex;
+
+                position: absolute;
+
+                top: 100%;
+
+                left: 0;
+
+                right: 0;
+
+                background:
+                    var(--bg-alt);
+
+                flex-direction: column;
+
+                padding:
+                    20px 28px;
+
+                gap: 18px;
+
+                border-bottom:
+                    1px solid
+                    rgba(255,243,222,.1);
+            }
+
+
+            .visit-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .foot-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .footer-photo-row {
+
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+        }
+
+
+        @media (max-width:600px) {
+
+            .ticket .food-photo {
+
+                height: 175px;
+            }
+
+
+            .order-two {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .order-box {
+
+                padding:
+                    24px 18px;
+            }
+
+
+            .order-box h2 {
+
+                font-size: 2rem;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="tile-bg"></div>
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
+    <header>
+
+        <nav>
+
+            <a href="#top"
+               class="logo">
+
+                BIG
+                <span class="dot">●</span>
+                BITES
+
+            </a>
+
+
+            <div class="nav-links"
+                 id="navLinks">
+
+                <a href="#menu">
+                    Menu
+                </a>
+
+                <a href="#story">
+                    Our Story
+                </a>
+
+                <a href="#gallery">
+                    Gallery
+                </a>
+
+                <a href="#visit">
+                    Visit Us
+                </a>
+
+            </div>
+
+
+            <!-- UPDATED -->
+
+            <button
+                type="button"
+                class="nav-cta order-open">
+
+                Call to Order
+
+            </button>
+
+
+            <button
+                class="burger"
+                id="burgerBtn"
+                type="button"
+                aria-label="Toggle menu">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section
+        class="hero"
+        id="top">
+
+        <div class="bite-decal">
+
+            <div class="label">
+
+                Hand-smashed
+                <br>
+                daily
+
+            </div>
+
+        </div>
+
+
+        <img
+            class="hero-photo"
+            src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=900&q=90"
+            alt="Big Bites loaded smash burger"
+            loading="eager">
+
+
+        <div class="hero-inner">
+
+            <div class="eyebrow">
+
+                Islamabad's Late-Night Kitchen
+
+            </div>
+
+
+            <h1>
+
+                BIG
+                <span class="flicker">
+                    BITES
+                </span>
+
+            </h1>
+
+
+            <p class="lede">
+
+                Smash burgers, crispy chicken,
+                and loaded fries — cooked fast,
+                served hot, and built to take a
+                proper bite out of.
+                No shortcuts on flavour, ever.
+
+            </p>
+
+
+            <div class="hero-ctas">
+
+                <a
+                    href="#menu"
+                    class="btn-primary">
+
+                    See The Menu →
+
+                </a>
+
+
+                <!-- UPDATED -->
+
+                <button
+                    type="button"
+                    class="btn-ghost order-open">
+
+                    Order For Delivery
+
+                </button>
+
+            </div>
+
+
+            <div class="hero-stats">
+
+                <div class="stat">
+
+                    <b>12PM–2AM</b>
+
+                    <span>
+                        Open Daily
+                    </span>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <b>25 Min</b>
+
+                    <span>
+                        Avg. Delivery
+                    </span>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <b>100%</b>
+
+                    <span>
+                        Fresh, Never Frozen
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         MENU
+    ========================= -->
+
+    <section
+        class="section"
+        id="menu">
+
+        <div class="wrap">
+
+
+            <div class="section-head reveal">
+
+                <div class="eyebrow">
+                    The Menu
+                </div>
+
+                <h2>
+                    Order Like You Mean It
+                </h2>
+
+                <p>
+                    Every order is fired fresh —
+                    pick your section below.
+                </p>
+
+            </div>
+
+
+            <div
+                class="menu-tabs reveal">
+
+                <button
+                    class="menu-tab active"
+                    data-cat="all">
+
+                    All
+
+                </button>
+
+
+                <button
+                    class="menu-tab"
+                    data-cat="burgers">
+
+                    Burgers
+
+                </button>
+
+
+                <button
+                    class="menu-tab"
+                    data-cat="chicken">
+
+                    Fried Chicken
+
+                </button>
+
+
+                <button
+                    class="menu-tab"
+                    data-cat="wraps">
+
+                    Wraps & Rolls
+
+                </button>
+
+
+                <button
+                    class="menu-tab"
+                    data-cat="sides">
+
+                    Fries & Sides
+
+                </button>
+
+
+                <button
+                    class="menu-tab"
+                    data-cat="drinks">
+
+                    Shakes & Drinks
+
+                </button>
+
+            </div>
+
+
+            <div
+                class="menu-grid"
+                id="menuGrid">
+
+
+                <!-- BURGERS -->
+
+                <div
+                    class="ticket reveal"
+                    data-cat="burgers">
+
+                    <img
+                        class="food-photo"
+                        src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=90"
+                        alt="Big Bites Zinger"
+                        loading="lazy">
+
+                    <div class="row1">
+
+                        <h3>
+                            Big Bites Zinger
+                        </h3>
+
+                        <span class="price">
+                            Rs. 550
+                        </span>
+
+                    </div>
+
+                    <p>
+                        Crispy zinger fillet,
+                        house mayo, iceberg,
+                        pickles, toasted sesame bun.
+                    </p>
+
+                    <span class="tag">
+                        Bestseller
+                    </span>
+
+                    <div class="stamp">
+                        HOT
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="ticket reveal"
+                    data-cat="burgers">
+
+                    <img
+                        class="food-photo"
+                        src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=900&q=90"
+                        alt="Smash Beef Burger"
+                        loading="lazy">
+
+                    <div class="row1">
+
+                        <h3>
+                            Smash Beef Burger
+                        </h3>
+
+                        <span class="price">
+                            Rs. 650
+                        </span>
+
+                    </div>
+
+                    <p>
+                        Double smash patty,
+                        caramelised onions,
+                        cheddar, smoky burger sauce.
+                    </p>
+
+                    <span class="tag">
+                        Chef's Pick
+                    </span>
+
+                    <div class="stamp">
+                        HOT
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="ticket reveal"
+                    data-cat="burgers">
+
+                    <img
+                        class="food-photo"
+                        src="https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?auto=format&fit=crop&w=900&q=90"
+                        alt="Cheese-Loaded Burger"
+                        loading="lazy">
+
+                    <div class="row1">
+
+                        <h3>
+                            Cheese-Loaded Burger
+                        </h3>
+
+                        <span class="price">
+                            Rs. 600
+                        </span>
+
+                    </div>
+
+                    <p>
+                        Beef patty buried under
+                        molten cheddar, jalapeños,
+                        and spicy aioli.
+                    </p>
+
+                    <span class="tag">
+                        Spicy
+                    </span>
+
+                    <div class="stamp">
+                        HOT
+                    </div>
+
+                </div>
+
+
+                <!-- CHICKEN -->
+
+                <div
+                    class="ticket reveal"
+                    data-cat="chicken">
+
+                    <img
+                        class="food-photo"
+                        src="https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=900&q=90"
+                        alt="Crispy Wings"
+                        loading="lazy">
+
+                    <div class="row1">
+
+                        <h3>
+                            Crispy Wings (6pc)
+                        </h3>
+
+                        <span class="price">
+                            Rs. 700
+                        </span>
+
+                    </div>
+
+                    <p>
+                        Buttermilk-brined wings,
+                        double-fried, tossed in
+                        peri-peri glaze.
+                    </p>
+
+                    <span class="tag">
+                        Sharing
+                    </span>
+
+                    <div class="stamp">
+                        FRESH
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="ticket reveal"
+                    data-cat="chicken">
+
+                    <img
+                        class="food-photo"
+                        src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=900&q=90"
+                        alt="Chicken Broast"
+                        loading="lazy">
+
+                    <div class="row1">
+
+                        <h3>
+                            Chicken Broast (2pc)
+                        </h3>
+
+                        <span class="price">
+                            Rs. 550
+                        </span>
+
+                    </div>
+
+                    <p>
+                        Classic broast,
+                        shattering crust,
+                        served with garlic mayo
+                        and salad.
+                    </p>
+
+                    <span class="tag">
+                        Family Fave
+                    </span>
+
+                    <div class="stamp">
+                        FRESH
+                    </div>
+
+                </div>
+
+
+                <!-- WRAPS -->
+
+                <div
+                    class="ticket reveal"
+                    data-cat="wraps">
+
+                    <img
+                        class="food-photo"
+                        src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=900&q=90"
+                        alt="Zinger Roll"
+                        loading="lazy">
+
+                    <div class="row1">
+
+                        <h3>
+                            Zinger Roll
+                        </h3>
+
+                        <span class="price">
+                            Rs. 400
+                        </span>
+
+                    </div>
+
+                    <p>
+                        Crispy fillet strips,
+                        mint yogurt, pickled onion,
+                        rolled in soft paratha.
+                    </p>
+
+                    <span class="tag">
+                        Quick Bite
+                    </span>
+
+                    <div class="stamp">
+                        HOT
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="ticket reveal"
+                    data-cat="wraps">
+
+                    <img
+                        class="food-photo"
+                        src="https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=900&q=90"
+                        alt="Shawarma Roll"
+                        loading="lazy">
+
+                    <div class="row1">
+
+                        <h3>
+                            Shawarma Roll
+                        </h3>
+
+                        <span class="price">
+                            Rs. 300
+                        </span>
+
+                    </div>
+
+                    <p>
+                        Marinated chicken shawarma,
+                        garlic sauce, fries tucked right in.
+                    </p>
+
+                    <span class="tag">
+                        Value
+                    </span>
+
+                    <div class="stamp">
+                        HOT
+                    </div>
+
+                </div>
+
+
+                <!-- SIDES -->
+
+                <div
+                    class="ticket reveal"
+                    data-cat="sides">
+
+                    <img
+                        class="food-photo"
+                        src="https://images.unsplash.com/photo-1585109649139-366815a0d713?auto=format&fit=crop&w=900&q=90"
+                        alt="Loaded Fries"
+                        loading="lazy">
+
+                    <div class="row1">
+
+                        <h3>
+                            Loaded Fries
+                        </h3>
+
+                        <span class="price">
+                            Rs. 450
+                        </span>
+
+                    </div>
+
+                    <p>
+                        Beef mince, melted cheese,
+                        jalapeños, and chipotle drizzle.
+                    </p>
+
+                    <span class="tag">
+                        Sharing
+                    </span>
+
+                    <div class="stamp">
+                        FRESH
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="ticket reveal"
+                    data-cat="sides">
+
+                    <img
+                        class="food-photo"
+                        src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=900&q=90"
+                        alt="Cheesy Fries"
+                        loading="lazy">
+
+                    <div class="row1">
+
+                        <h3>
+                            Cheesy Fries
+                        </h3>
+
+                        <span class="price">
+                            Rs. 400
+                        </span>
+
+                    </div>
+
+                    <p>
+                        Golden fries smothered
+                        in a warm four-cheese sauce.
+                    </p>
+
+                    <span class="tag">
+                        Popular
+                    </span>
+
+                    <div class="stamp">
+                        FRESH
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="ticket reveal"
+                    data-cat="sides">
+
+                    <img
+                        class="food-photo"
+                        src="https://images.unsplash.com/photo-1576107232684-1279f390859e?auto=format&fit=crop&w=900&q=90"
+                        alt="Regular Fries"
+                        loading="lazy">
+
+                    <div class="row1">
+
+                        <h3>
+                            Regular Fries
+                        </h3>
+
+                        <span class="price">
+                            Rs. 250
+                        </span>
+
+                    </div>
+
+                    <p>
+                        Crispy-edged,
+                        fluffy-centred,
+                        salted just right.
+                    </p>
+
+                    <span class="tag">
+                        Classic
+                    </span>
+
+                    <div class="stamp">
+                        FRESH
+                    </div>
+
+                </div>
+
+
+                <!-- DRINKS -->
+
+                <div
+                    class="ticket reveal"
+                    data-cat="drinks">
+
+                    <img
+                        class="food-photo"
+                        src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=900&q=90"
+                        alt="Oreo Shake"
+                        loading="lazy">
+
+                    <div class="row1">
+
+                        <h3>
+                            Oreo Shake
+                        </h3>
+
+                        <span class="price">
+                            Rs. 400
+                        </span>
+
+                    </div>
+
+                    <p>
+                        Thick vanilla shake
+                        blended with real Oreo crumble.
+                    </p>
+
+                    <span class="tag">
+                        Sweet
+                    </span>
+
+                    <div class="stamp">
+                        COLD
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="ticket reveal"
+                    data-cat="drinks">
+
+                    <img
+                        class="food-photo"
+                        src="https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=900&q=90"
+                        alt="Mango Shake"
+                        loading="lazy">
+
+                    <div class="row1">
+
+                        <h3>
+                            Mango Shake
+                        </h3>
+
+                        <span class="price">
+                            Rs. 350
+                        </span>
+
+                    </div>
+
+                    <p>
+                        Seasonal mango blended
+                        thick and cold — no shortcuts.
+                    </p>
+
+                    <span class="tag">
+                        Seasonal
+                    </span>
+
+                    <div class="stamp">
+                        COLD
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="ticket reveal"
+                    data-cat="drinks">
+
+                    <img
+                        class="food-photo"
+                        src="https://images.unsplash.com/photo-1581636625402-29b2a704ef13?auto=format&fit=crop&w=900&q=90"
+                        alt="Soft Drink"
+                        loading="lazy">
+
+                    <div class="row1">
+
+                        <h3>
+                            Soft Drink
+                        </h3>
+
+                        <span class="price">
+                            Rs. 100
+                        </span>
+
+                    </div>
+
+                    <p>
+                        Ice-cold classics —
+                        ask your server what's chilling today.
+                    </p>
+
+                    <span class="tag">
+                        Chilled
+                    </span>
+
+                    <div class="stamp">
+                        COLD
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         OUR STORY
+    ========================= -->
+
+    <section
+        class="section section-alt"
+        id="story">
+
+        <div class="wrap">
+
+            <div class="about-grid">
+
+
+                <div class="about-copy reveal">
+
+                    <span class="marker">
+
+                        Since day one,
+                        it's been simple —
+
+                    </span>
+
+
+                    <div class="eyebrow">
+
+                        Our Story
+
+                    </div>
+
+
+                    <h2
+                        style="
+                        font-size:
+                        clamp(2rem,4.5vw,2.8rem);
+                        margin-bottom:20px;">
+
+                        Fast Food,
+                        Cooked Properly
+
+                    </h2>
+
+
+                    <p>
+
+                        Big Bites started as a
+                        single griddle and a stubborn
+                        idea: fast food doesn't have to
+                        mean lazy food.
+
+                        Every patty is hand-smashed
+                        to order, every wing is
+                        double-fried for crunch,
+                        and nothing sits under a
+                        heat lamp waiting for you.
+
+                    </p>
+
+
+                    <p>
+
+                        We built this place for the
+                        1am cravings and the after-work
+                        rush alike — loud flavours,
+                        honest prices, and a kitchen
+                        that never slows down.
+
+                    </p>
+
+
+                    <a
+                        href="#menu"
+                        class="btn-ghost">
+
+                        Explore The Menu
+
+                    </a>
+
+                </div>
+
+
+                <div
+                    class="about-visual reveal">
+
+                    <div class="big-num">
+                        04:12
+                    </div>
+
+                    <div class="cap">
+
+                        Average time from order
+                        to table — we clock it
+                        every shift.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         GALLERY
+    ========================= -->
+
+    <section
+        class="section"
+        id="gallery">
+
+        <div class="wrap">
+
+            <div class="section-head reveal">
+
+                <div class="eyebrow">
+                    From The Kitchen
+                </div>
+
+                <h2>
+                    What's Sizzling Today
+                </h2>
+
+            </div>
+
+
+            <div class="strip reveal">
+
+
+                <div
+                    class="strip-card photo-card"
+                    style="
+                    background-image:
+                    url(
+                    'https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=1000&q=90'
+                    );">
+
+                    <div>
+
+                        <h4>
+                            Thick Shakes
+                        </h4>
+
+                        <span>
+                            Blended to order
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="strip-card photo-card"
+                    style="
+                    background-image:
+                    url(
+                    'https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1000&q=90'
+                    );">
+
+                    <div>
+
+                        <h4>
+                            Smash Burgers
+                        </h4>
+
+                        <span>
+                            Fresh from the griddle
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="strip-card photo-card"
+                    style="
+                    background-image:
+                    url(
+                    'https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=1000&q=90'
+                    );">
+
+                    <div>
+
+                        <h4>
+                            Crispy Chicken
+                        </h4>
+
+                        <span>
+                            Crunch in every bite
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="strip-card photo-card"
+                    style="
+                    background-image:
+                    url(
+                    'https://images.unsplash.com/photo-1585109649139-366815a0d713?auto=format&fit=crop&w=1000&q=90'
+                    );">
+
+                    <div>
+
+                        <h4>
+                            Loaded Fries
+                        </h4>
+
+                        <span>
+                            Built for sharing
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         VISIT
+    ========================= -->
+
+    <section
+        class="section section-alt"
+        id="visit">
+
+        <div class="wrap">
+
+
+            <div class="section-head reveal">
+
+                <div class="eyebrow">
+                    Visit Us
+                </div>
+
+                <h2>
+                    Find Big Bites
+                </h2>
+
+            </div>
+
+
+            <div class="visit-grid">
+
+
+                <div
+                    class="visit-card photo-location reveal">
+
+                    <h3>
+                        Location & Hours
+                    </h3>
+
+
+                    <p class="addr">
+
+                        Shop 4,
+                        Kohsar Market Road,
+                        F-10 Markaz,
+                        Islamabad
+
+                    </p>
+
+
+                    <div class="visit-row">
+
+                        <span>
+                            Mon – Thu
+                        </span>
+
+                        <span>
+                            12:00 PM – 1:00 AM
+                        </span>
+
+                    </div>
+
+
+                    <div class="visit-row">
+
+                        <span>
+                            Fri – Sun
+                        </span>
+
+                        <span>
+                            12:00 PM – 2:00 AM
+                        </span>
+
+                    </div>
+
+
+                    <div class="visit-row">
+
+                        <span>
+                            Delivery
+                        </span>
+
+                        <span>
+                            Within 6 km
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="visit-card photo-contact reveal">
+
+                    <h3>
+                        Get In Touch
+                    </h3>
+
+
+                    <div class="visit-row">
+
+                        <span>
+                            Phone
+                        </span>
+
+                        <span>
+                            0300 1234567
+                        </span>
+
+                    </div>
+
+
+                    <div class="visit-row">
+
+                        <span>
+                            WhatsApp Orders
+                        </span>
+
+                        <span>
+                            0300 1234567
+                        </span>
+
+                    </div>
+
+
+                    <div class="visit-row">
+
+                        <span>
+                            Instagram
+                        </span>
+
+                        <span>
+                            @bigbites.isb
+                        </span>
+
+                    </div>
+
+
+                    <p style="margin-top:16px;">
+
+                        Placeholder details above —
+                        swap in your real address,
+                        number, and socials before launch.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CTA
+    ========================= -->
+
+    <section
+        class="cta-banner">
+
+        <div class="wrap">
+
+            <h2>
+                Hungry Yet?
+            </h2>
+
+
+            <p>
+                Call it in, or walk up —
+                the griddle's always hot.
+            </p>
+
+
+            <button
+                type="button"
+                class="btn-primary order-open">
+
+                Call Now:
+                0300 1234567
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ORDER MODAL
+    ========================= -->
+
+    <div
+        class="order-modal"
+        id="orderModal"
+        aria-hidden="true">
+
+
+        <div
+            class="order-box"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="orderTitle">
+
+
+            <button
+                type="button"
+                class="order-close"
+                id="orderClose"
+                aria-label="Close">
+
+                &times;
+
+            </button>
+
+
+            <h2 id="orderTitle">
+
+                Place Your Order
+
+            </h2>
+
+
+            <p class="order-sub">
+
+                Fill in your details and
+                Big Bites will receive your order.
+
+            </p>
+
+
+            <form
+                class="order-form"
+                id="orderForm">
+
+
+                <label>
+
+                    Full Name *
+
+                    <input
+                        name="name"
+                        required
+                        placeholder="Enter your name">
+
+                </label>
+
+
+                <div class="order-two">
+
+
+                    <label>
+
+                        Phone Number *
+
+                        <input
+                            name="phone"
+                            type="tel"
+                            required
+                            placeholder="03XX XXXXXXX">
+
+                    </label>
+
+
+                    <label>
+
+                        Quantity *
+
+                        <input
+                            name="quantity"
+                            type="number"
+                            min="1"
+                            value="1"
+                            required>
+
+                    </label>
+
+
+                </div>
+
+
+                <label>
+
+                    What would you like? *
+
+                    <select
+                        name="item"
+                        required>
+
+                        <option value="">
+                            Select an item
+                        </option>
+
+                        <option>
+                            Big Bites Zinger
+                        </option>
+
+                        <option>
+                            Smash Beef Burger
+                        </option>
+
+                        <option>
+                            Cheese-Loaded Burger
+                        </option>
+
+                        <option>
+                            Crispy Wings (6pc)
+                        </option>
+
+                        <option>
+                            Chicken Broast (2pc)
+                        </option>
+
+                        <option>
+                            Zinger Roll
+                        </option>
+
+                        <option>
+                            Shawarma Roll
+                        </option>
+
+                        <option>
+                            Loaded Fries
+                        </option>
+
+                        <option>
+                            Cheesy Fries
+                        </option>
+
+                        <option>
+                            Regular Fries
+                        </option>
+
+                        <option>
+                            Oreo Shake
+                        </option>
+
+                        <option>
+                            Mango Shake
+                        </option>
+
+                        <option>
+                            Soft Drink
+                        </option>
+
+                    </select>
+
+                </label>
+
+
+                <label>
+
+                    Delivery Address *
+
+                    <textarea
+                        name="address"
+                        required
+                        placeholder="House/Street/Area, Islamabad"></textarea>
+
+                </label>
+
+
+                <label>
+
+                    Extra Notes
+
+                    <textarea
+                        name="notes"
+                        placeholder="Less spicy, extra cheese, etc. (optional)"></textarea>
+
+                </label>
+
+
+                <p
+                    class="order-status"
+                    id="orderStatus">
+                </p>
+
+
+                <button
+                    type="submit"
+                    class="btn-primary order-submit"
+                    id="orderSubmit">
+
+                    Place Order
+
+                </button>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <div class="wrap">
+
+
+            <div class="foot-grid">
+
+
+                <div>
+
+                    <div class="foot-logo">
+
+                        BIG
+                        <span class="dot">●</span>
+                        BITES
+
+                    </div>
+
+
+                    <p>
+
+                        Loaded, loud, and fired fresh
+                        in Islamabad.
+
+                        Fast food that earns the name —
+                        hot off the griddle,
+                        straight to you.
+
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <h4>
+                        Explore
+                    </h4>
+
+
+                    <ul>
+
+                        <li>
+                            <a href="#menu">
+                                Menu
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#story">
+                                Our Story
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#gallery">
+                                Gallery
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#visit">
+                                Visit Us
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <div>
+
+                    <h4>
+                        Contact
+                    </h4>
+
+
+                    <ul>
+
+                        <li>
+
+                            <a
+                                href="tel:+923135658336">
+
+                                03135658336
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a href="#">
+                                @bigbites.isb
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a href="#visit">
+
+                                F-10 Markaz,
+                                Islamabad
+
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+            </div>
+
+
+            <div
+                class="footer-photo-row"
+                aria-label="Big Bites food highlights">
+
+
+                <img
+                    src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1200&q=90"
+                    alt="Big Bites burger"
+                    loading="lazy">
+
+
+                <img
+                    src="https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=1200&q=90"
+                    alt="Crispy chicken wings"
+                    loading="lazy">
+
+
+                <img
+                    src="https://images.unsplash.com/photo-1585109649139-366815a0d713?auto=format&fit=crop&w=1200&q=90"
+                    alt="Loaded fries"
+                    loading="lazy">
+
+
+                <img
+                    src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=1200&q=90"
+                    alt="Oreo shake"
+                    loading="lazy">
+
+            </div>
+
+
+            <div class="foot-bottom">
+
+                <span>
+                    © 2026 Big Bites.
+                    All rights reserved.
+                </span>
+
+                <span>
+                    Built with love
+                    (and a lot of chili sauce).
+                </span>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+   <script>
+
+    /* =========================
+       MOBILE NAV
+    ========================= */
+
+    const burgerBtn = document.getElementById('burgerBtn');
+    const navLinks = document.getElementById('navLinks');
+
+    if (burgerBtn && navLinks) {
+
+        burgerBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+            });
+
+        });
+    }
+
+
+    /* =========================
+       MENU FILTER
+    ========================= */
+
+    const tabs = document.querySelectorAll('.menu-tab');
+    const tickets = document.querySelectorAll('.ticket');
+
+    tabs.forEach(tab => {
+
+        tab.addEventListener('click', () => {
+
+            tabs.forEach(t => {
+                t.classList.remove('active');
+            });
+
+            tab.classList.add('active');
+
+            const category = tab.dataset.cat;
+
+            tickets.forEach(ticket => {
+
+                if (
+                    category === 'all' ||
+                    ticket.dataset.cat === category
+                ) {
+                    ticket.style.display = '';
+                } else {
+                    ticket.style.display = 'none';
+                }
+
+            });
+
+        });
+
+    });
+
+
+    /* =========================
+       SCROLL REVEAL
+    ========================= */
+
+    const revealEls = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add('in');
+
+                    observer.unobserve(entry.target);
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.15
+        }
+    );
+
+    revealEls.forEach(el => {
+        observer.observe(el);
+    });
+
+
+    /* =========================
+       ORDER MODAL
+    ========================= */
+
+    const orderModal =
+        document.getElementById('orderModal');
+
+    const orderClose =
+        document.getElementById('orderClose');
+
+    const orderForm =
+        document.getElementById('orderForm');
+
+    const orderStatus =
+        document.getElementById('orderStatus');
+
+    const orderSubmit =
+        document.getElementById('orderSubmit');
+
+    const openOrderButtons =
+        document.querySelectorAll('.order-open');
+
+
+    /* OPEN ORDER MODAL */
+
+    function openOrderForm() {
+
+        if (!orderModal) return;
+
+        orderModal.classList.add('show');
+
+        orderModal.setAttribute(
+            'aria-hidden',
+            'false'
+        );
+
+        if (orderStatus) {
+
+            orderStatus.textContent = '';
+
+            orderStatus.className =
+                'order-status';
+
+        }
+
+        document.body.style.overflow = 'hidden';
+    }
+
+
+    /* CLOSE ORDER MODAL */
+
+    function closeOrderForm() {
+
+        if (!orderModal) return;
+
+        orderModal.classList.remove('show');
+
+        orderModal.setAttribute(
+            'aria-hidden',
+            'true'
+        );
+
+        document.body.style.overflow = '';
+    }
+
+
+    /* ORDER BUTTONS */
+
+    openOrderButtons.forEach(button => {
+
+        button.addEventListener(
+            'click',
+            openOrderForm
+        );
+
+    });
+
+
+    /* CLOSE BUTTON */
+
+    if (orderClose) {
+
+        orderClose.addEventListener(
+            'click',
+            closeOrderForm
+        );
+
+    }
+
+
+    /* CLICK OUTSIDE */
+
+    if (orderModal) {
+
+        orderModal.addEventListener(
+            'click',
+            event => {
+
+                if (event.target === orderModal) {
+
+                    closeOrderForm();
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* ESCAPE KEY */
+
+    document.addEventListener(
+        'keydown',
+        event => {
+
+            if (
+                event.key === 'Escape' &&
+                orderModal &&
+                orderModal.classList.contains('show')
+            ) {
+
+                closeOrderForm();
+
+            }
+
+        }
+    );
+
+
+    /* =========================
+       PLACE ORDER
+    ========================= */
+
+    if (orderForm) {
+
+        orderForm.addEventListener(
+            'submit',
+            async event => {
+
+                event.preventDefault();
+
+
+                /* BUTTON */
+
+                orderSubmit.disabled = true;
+
+                orderSubmit.textContent =
+                    'Sending Order...';
+
+
+                /* STATUS */
+
+                orderStatus.textContent = '';
+
+                orderStatus.className =
+                    'order-status';
+
+
+                /* FORM DATA */
+
+                const order =
+                    Object.fromEntries(
+                        new FormData(orderForm).entries()
+                    );
+
+
+                console.log(
+                    'Sending order:',
+                    order
+                );
+
+
+                try {
+
+                    /* =========================
+                       CONNECT TO NODE.JS
+                    ========================= */
+
+                    const response =
+                        await fetch(
+                            'http://localhost:5000/api/orders',
+                            {
+                                method: 'POST',
+
+                                headers: {
+                                    'Content-Type':
+                                        'application/json'
+                                },
+
+                                body:
+                                    JSON.stringify(order)
+                            }
+                        );
+
+
+                    /* SERVER RESPONSE */
+
+                    const data =
+                        await response.json();
+
+
+                    console.log(
+                        'Node.js response:',
+                        data
+                    );
+
+
+                    /* CHECK */
+
+                    if (
+                        !response.ok ||
+                        !data.success
+                    ) {
+
+                        throw new Error(
+                            data.message ||
+                            'Order failed'
+                        );
+
+                    }
+
+
+                    /* =========================
+                       SUCCESS
+                    ========================= */
+
+                    orderStatus.textContent =
+                        '✅ Order received! We will contact you shortly.';
+
+                    orderStatus.className =
+                        'order-status success';
+
+
+                    /* RESET FORM */
+
+                    orderForm.reset();
+
+
+                    /* RESET QUANTITY */
+
+                    const quantityInput =
+                        orderForm.querySelector(
+                            '[name="quantity"]'
+                        );
+
+                    if (quantityInput) {
+
+                        quantityInput.value = '1';
+
+                    }
+
+
+                } catch (error) {
+
+                    console.error(
+                        'Order Error:',
+                        error
+                    );
+
+
+                    /* =========================
+                       ERROR
+                    ========================= */
+
+                    orderStatus.textContent =
+                        '❌ Could not send order. Make sure Node.js server is running on port 5000.';
+
+                    orderStatus.className =
+                        'order-status error';
+
+                } finally {
+
+                    orderSubmit.disabled = false;
+
+                    orderSubmit.textContent =
+                        'Place Order';
+
+                }
+
+            }
+        );
+
+    }
+
+</script>
