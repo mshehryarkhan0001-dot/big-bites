@@ -1,4 +1,25 @@
-```javascript
+const { neon } = require("@neondatabase/serverless");
+
+const sql = neon(process.env.DATABASE_URL);
+
+async function createTable() {
+    await sql`
+        CREATE TABLE IF NOT EXISTS orders (
+            id BIGSERIAL PRIMARY KEY,
+            customer VARCHAR(255) NOT NULL,
+            phone VARCHAR(50),
+            item VARCHAR(255) NOT NULL,
+            quantity INTEGER NOT NULL,
+            price NUMERIC NOT NULL,
+            address TEXT,
+            notes TEXT,
+            total NUMERIC NOT NULL,
+            status VARCHAR(50) DEFAULT 'New',
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    `;
+}
+
 const menuPrices = {
     "Big Bites Zinger": 550,
     "Smash Beef Burger": 650,
@@ -19,36 +40,44 @@ const menuPrices = {
     "Soft Drink": 100
 };
 
-// Temporary storage
-let orders = [];
+module.exports = async (req, res) => {
 
-export default async function handler(req, res) {
+    try {
 
-    // Allow requests from website
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+        await createTable();
 
-    // OPTIONS request
-    if (req.method === "OPTIONS") {
-        return res.status(200).end();
-    }
+        // ==============================
+        // GET ALL ORDERS
+        // ==============================
 
-    // ==============================
-    // GET ALL ORDERS
-    // ==============================
+        if (req.method === "GET") {
 
-    if (req.method === "GET") {
-        return res.status(200).json(orders);
-    }
+            const orders = await sql`
+                SELECT
+                    id,
+                    customer,
+                    phone,
+                    item,
+                    quantity,
+                    price,
+                    address,
+                    notes,
+                    total,
+                    status,
+                    created_at
+                FROM orders
+                ORDER BY created_at DESC
+            `;
 
-    // ==============================
-    // POST NEW ORDER
-    // ==============================
+            return res.status(200).json(orders);
+        }
 
-    if (req.method === "POST") {
 
-        try {
+        // ==============================
+        // CREATE ORDER
+        // ==============================
+
+        if (req.method === "POST") {
 
             const {
                 name,
@@ -68,78 +97,74 @@ export default async function handler(req, res) {
                 item || items;
 
             if (!selectedItem) {
+
                 return res.status(400).json({
                     success: false,
                     message: "Please select a menu item."
                 });
+
             }
 
             const qty = Number(quantity) || 1;
 
             if (qty < 1) {
+
                 return res.status(400).json({
                     success: false,
                     message: "Quantity must be at least 1."
                 });
+
             }
 
             const price =
                 menuPrices[selectedItem];
 
             if (!price) {
+
                 return res.status(400).json({
                     success: false,
                     message: "Invalid menu item selected."
                 });
+
             }
 
             const total =
                 price * qty;
 
-            const order = {
 
-                id: Date.now(),
-
-                customer:
-                    customerName,
-
-                phone:
-                    phone || "",
-
-                item:
-                    selectedItem,
-
-                quantity:
-                    qty,
-
-                price:
+            const result = await sql`
+                INSERT INTO orders
+                (
+                    customer,
+                    phone,
+                    item,
+                    quantity,
                     price,
-
-                address:
-                    address || "",
-
-                notes:
-                    notes || "",
-
-                total:
+                    address,
+                    notes,
                     total,
+                    status
+                )
+                VALUES
+                (
+                    ${customerName},
+                    ${phone || ""},
+                    ${selectedItem},
+                    ${qty},
+                    ${price},
+                    ${address || ""},
+                    ${notes || ""},
+                    ${total},
+                    'New'
+                )
+                RETURNING *
+            `;
 
-                status:
-                    "New",
 
-                date:
-                    new Date().toLocaleString()
+            console.log("NEW ORDER:", result[0]);
 
-            };
 
-            orders.push(order);
-
-            console.log(
-                "NEW ORDER:",
-                order
-            );
-
-            return res.status(200).json({
+            return res.status(201).json({
 
                 success: true,
 
@@ -147,41 +172,143 @@ export default async function handler(req, res) {
                     "Order received successfully!",
 
                 order:
-                    order
+                    result[0]
 
             });
 
         }
 
-        catch (error) {
 
-            console.error(
-                "Order Error:",
-                error
-            );
+        // ==============================
+        // UPDATE ORDER
+        // ==============================
 
-            return res.status(500).json({
+        if (req.method === "PUT") {
 
-                success: false,
+            const {
+                id,
+                status
+            } = req.body || {};
+
+            if (!id) {
+
+                return res.status(400).json({
+                    success: false,
+                    message: "Order ID is required."
+                });
+
+            }
+
+            const result = await sql`
+                UPDATE orders
+                SET status = ${status || "New"}
+                WHERE id = ${Number(id)}
+                RETURNING *
+            `;
+
+
+            if (result.length === 0) {
+
+                return res.status(404).json({
+                    success: false,
+                    message: "Order not found."
+                });
+
+            }
+
+
+            return res.status(200).json({
+
+                success: true,
 
                 message:
-                    "Server error while processing order."
+                    "Order status updated successfully.",
+
+                order:
+                    result[0]
 
             });
+
         }
+
+
+        // ==============================
+        // DELETE ORDER
+        // ==============================
+
+        if (req.method === "DELETE") {
+
+            const id =
+                Number(req.query.id);
+
+            if (!id) {
+
+                return res.status(400).json({
+                    success: false,
+                    message: "Order ID is required."
+                });
+
+            }
+
+            const result = await sql`
+                DELETE FROM orders
+                WHERE id = ${id}
+                RETURNING *
+            `;
+
+
+            if (result.length === 0) {
+
+                return res.status(404).json({
+                    success: false,
+                    message: "Order not found."
+                });
+
+            }
+
+
+            return res.status(200).json({
+
+                success: true,
+
+                message:
+                    "Order deleted successfully."
+
+            });
+
+        }
+
+
+        return res.status(405).json({
+
+            success: false,
+
+            message:
+                "Method not allowed."
+
+        });
+
     }
 
-    // ==============================
-    // OTHER METHODS
-    // ==============================
+    catch (error) {
 
-    return res.status(405).json({
+        console.error(
+            "DATABASE ERROR:",
+            error
+        );
 
-        success: false,
+        return res.status(500).json({
 
-        message:
-            "Method not allowed"
+            success: false,
 
-    });
-}
-```
+            message:
+                "Database error.",
+
+            error:
+                error.message
+
+        });
+
+    }
+
+};
